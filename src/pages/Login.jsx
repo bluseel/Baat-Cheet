@@ -24,7 +24,7 @@ const Login = () =>{
           }
         
     }
-
+    
 
 
     return(
@@ -40,7 +40,7 @@ const Login = () =>{
                     <button>Sign in</button>
                 </form>
                 {err && <span>An error occured</span>}
-                <p>Not registered? <Link to="/register">Sign up</Link></p>
+                <p>Not registered? <Link to="/register"> Sign up</Link></p>
             </div>
 
         </div>
