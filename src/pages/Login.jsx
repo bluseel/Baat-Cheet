@@ -31,16 +31,23 @@ const Login = () =>{
         <div className="formContainer">
 
             <div className="formWrapper">
-                <span className="logo">Baat-Cheet</span>
-                <span className="title">Login</span>
-                <form onSubmit={handleSubmit}>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    
-                    <button>Sign in</button>
-                </form>
-                {err && <span>An error occured</span>}
-                <p>Not registered? <Link to="/register"> Sign up</Link></p>
+                <div className="logoWrapper">
+                    <span className="logo">Pegaam</span>
+                    <span className="sub-logo" > ~Har pal baat cheet~</span>
+                </div>
+
+                <div className="core-formWrapper">
+
+                    <span className="title">Login</span>
+                    <form onSubmit={handleSubmit}>
+                        <input type="email" placeholder="Email" />
+                        <input type="password" placeholder="Password" />
+                        
+                        <button>Sign in</button>
+                    </form>
+                    {err && <span>An error occured</span>}
+                    <p>Not registered? <Link to="/register"> Sign up</Link></p>
+                </div>
             </div>
 
         </div>

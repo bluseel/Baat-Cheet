@@ -65,7 +65,12 @@ const Register = () =>{
         <div className="formContainer">
 
             <div className="formWrapper">
-                <span className="logo">Baat-Cheet</span>
+              <div className="logoWrapper">
+                <span className="logo">Pegaam</span>
+                <span className="sub-logo"> ~Har pal baat cheet~</span>
+              </div>
+              
+              <div className="core-formWrapper">
                 <span className="title">Sign up</span>
                 <form onSubmit={handleSubmit}>
                     <input type="text" placeholder="Display Name" />
@@ -82,6 +87,7 @@ const Register = () =>{
                 </form>
                 {err && <span>An error occured</span>}
                 <p>Already registered? <Link to="/login">Sign in</Link></p>
+              </div>
             </div>
 
         </div>
