@@ -8,7 +8,7 @@ const Navbar = () =>{
 
     return(
     <div className="navbar">
-        <span className="logo">Baat Cheet</span>
+        <span className="logo">Pegaam</span>
         <div className="user">
             <img src={currentUser.photoURL} alt="" />
             <span>{currentUser.displayName}</span>
