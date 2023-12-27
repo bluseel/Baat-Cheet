@@ -6,7 +6,7 @@ import { useState } from "react"
 const Home = () =>{
 
     const [showSideBar, setShowSideBar] = useState(true);
-
+    
    return(
     <div className="home">
         <div className="container">

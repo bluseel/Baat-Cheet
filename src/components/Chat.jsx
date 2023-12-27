@@ -1,35 +1,41 @@
-import Messages from "./Messages"
-import Input from "./Input"
+import Messages from "./Messages";
+import Input from "./Input";
 import { ChatContext } from "../context/ChatContext";
 import { useContext, useState } from "react";
 
-const Chat = (prop) =>{
-    const {data} = useContext(ChatContext);
-    const [sidebarShown, setSidebarShown ] = useState(false);
-    
-    const handleMenu=()=>{
+const Chat = (props) => {
+  const { data } = useContext(ChatContext);
+  const [sidebarShown, setSidebarShown] = useState(false);
 
-        prop.onStateChange((prev)=>{
-            setSidebarShown(prev)
-            return !prev;
-        })
+  const handleMenu = () => {
+    props.onStateChange((prev) => {
+      setSidebarShown(prev);
+      return !prev;
+    });
+  };
 
-    }
-
-    return(
-     <div className="chat">
-        <div className="chatInfo">
-            <span>{data.user?.displayName}</span>
-            <div className="chatIcons">
-                {/* <img src="cam.svg" alt="" />
-                <img src="add.svg" alt=""  style={{marginRight:"20px"}}/> */}
-                <img src= {sidebarShown?'hamburger.svg':'cross.svg' } className="mobileInteface" onClick={handleMenu} style={{zIndex:"99999", position:"fixed", right:"10px", top:"22px"}}/>
-            </div>
+  return (
+    <div className="chat">
+      <div className="chatInfo">
+        <div className="chatUserInfo">
+          <img src={data.user ? data.user.photoURL : ""} alt="" />
+          <p>{data.user ? data.user.displayName : ""}</p>
         </div>
-        <Messages/>
-        <Input/>
-     </div>
-    )
- }
- 
- export default Chat;
+        <div className="chatIcons">
+          <img
+            src={sidebarShown ? "hamburger.svg" : "cross.svg"}
+            className="mobileInteface"
+            onClick={handleMenu}
+            style={{zIndex:100}}
+            alt=""
+          />
+        </div>
+
+      </div>
+      <Messages />
+      <Input />
+    </div>
+  );
+};
+
+export default Chat;

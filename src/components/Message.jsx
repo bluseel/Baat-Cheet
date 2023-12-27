@@ -7,7 +7,7 @@ const Message = ({ message, onEditMessage, onDeleteMessage }) => {
   const { data } = useContext(ChatContext);
   const [editMode, setEditMode] = useState(false);
   const [editedText, setEditedText] = useState(message.text);
-  const [clickCount, setClickCount] = useState(0);
+  const [clicked, setClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const ref = useRef();
 
@@ -23,16 +23,24 @@ const Message = ({ message, onEditMessage, onDeleteMessage }) => {
   const formattedDateTime = `${formattedTime}`;
 
   const handleContentClick = () => {
-    setClickCount((prevCount) => prevCount + 1);
+    setClicked((prev) => !prev);
 
     // Show on 1st click, hide on 2nd click
-    if (clickCount % 2 === 0) {
+    if (clicked) {
       setIsHovered(false);
     } else {
       setIsHovered(true);
     }
   };
 
+  const handleMouseEnter = () =>{
+    setIsHovered(true);
+  }
+
+  const handleMouseLeave = () =>{
+    setIsHovered(false);
+    
+  }
   const toggleEditMode = () => {
     setEditMode(!editMode);
   };
@@ -61,6 +69,8 @@ const Message = ({ message, onEditMessage, onDeleteMessage }) => {
       <div
         className="messageContent"
         onClick={handleContentClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {editMode ? (
           <>
