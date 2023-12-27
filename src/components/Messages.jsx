@@ -42,7 +42,8 @@ const Messages = () => {
     <div className="messages">
       { messages.length === 0?
         <div className="emptyMessages" style={{display:"flex", justifyContent:"center"}}>
-          <img src="empty.jpg" />
+          <img src="empty.png" />
+          <p>Nothing to see here. Open a chat</p>
 
         </div>
       :

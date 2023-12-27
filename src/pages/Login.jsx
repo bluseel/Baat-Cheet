@@ -32,8 +32,7 @@ const Login = () =>{
 
             <div className="formWrapper">
                 <div className="logoWrapper">
-                    <span className="logo">Pegaam</span>
-                    <span className="sub-logo" > ~Har pal baat cheet~</span>
+                    <img src="heroLogo.png" alt="" />
                 </div>
 
                 <div className="core-formWrapper">

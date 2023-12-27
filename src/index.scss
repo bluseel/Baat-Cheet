@@ -30,9 +30,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 34%;
+      justify-content: center;
       height: 100%;
-      background-color: #5d5b8d3b;
+      background-color: #a7bcff;
 
       .logo{
         color: #5d5b8d;
@@ -283,9 +283,20 @@
         height: calc(100% - 160px);
         overflow-y: scroll;
         .emptyMessages{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 50px;
           img{
-            width:200px;
-            transform: translateY(140%);
+            width:250px;
+            
+            transform: translateY(10%);
+          }
+
+          p{
+            font-size: 30px;
+            font-weight: 700;
+            color: #201f3b;
           }
         }
 
@@ -434,8 +445,12 @@
     .formWrapper {
       flex-direction: column;
       .logoWrapper {
-        width: 100%;
-        padding: 5% 0%;
+        padding: 10%;
+
+        img{
+          width: 80%;
+        }
+        height: 35%;
         flex: 0;
         .logo {
           font-size: 50px;
@@ -539,11 +554,17 @@
         .messages {
           object-fit:cover;
           .emptyMessages{
+            gap: 30px;
             img{
               width:200px;
-              transform: translateY(100%);
 
             }
+            
+          p{
+            font-size: 25px;
+            font-weight: 700;
+            color: #201f3b;
+          }
           }
 
           .message {
@@ -569,6 +590,10 @@
           }
         }
         .input {
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
           input {
             &::placeholder {}
           }

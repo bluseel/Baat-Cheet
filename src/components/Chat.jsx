@@ -23,7 +23,7 @@ const Chat = (prop) =>{
             <div className="chatIcons">
                 {/* <img src="cam.svg" alt="" />
                 <img src="add.svg" alt=""  style={{marginRight:"20px"}}/> */}
-                <img src= {sidebarShown?'hamburger.svg':'cross.svg' } className="mobileInteface" onClick={handleMenu} style={{zIndex:"99999"}}/>
+                <img src= {sidebarShown?'hamburger.svg':'cross.svg' } className="mobileInteface" onClick={handleMenu} style={{zIndex:"99999", position:"fixed", right:"10px", top:"22px"}}/>
             </div>
         </div>
         <Messages/>
