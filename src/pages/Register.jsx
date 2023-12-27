@@ -56,7 +56,7 @@ const Register = () =>{
             setErr(true);
             console.log(err);
           }
-        
+        s
     }
 
         

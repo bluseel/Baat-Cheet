@@ -76,6 +76,8 @@ const Search = () => {
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
+        <img src="search.svg"  onClick={handleSearch}/>
+
       </div>
       {err && <span>User not found!</span>}
       {user && (

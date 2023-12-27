@@ -14,6 +14,10 @@ const Input = () => {
   const [err, setErr] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
 
+  const handleKey = (e) => {
+    e.code === "Enter" && handleSend();
+  };
+
   const handleSend = async () => {
     try {
       setIsUploading(true);
@@ -111,6 +115,7 @@ const Input = () => {
         placeholder="Type your message ...."
         onChange={(e) => setText(e.target.value)}
         value={text}
+        onKeyDown={handleKey}
       />
       <div className="send">
         <input

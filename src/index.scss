@@ -3,6 +3,10 @@
 }
 
 
+.mobileInteface{
+  display: none;
+}
+
 .formContainer{
   background-color: rgb(82, 82, 156);
   height: 100vh;
@@ -11,8 +15,9 @@
   justify-content: center;
 
   .formWrapper {
-    height: 80vh;
-    width: 80vw;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
     background-color: white;
     border-radius: 10px;
     display: flex;
@@ -113,20 +118,19 @@
 
 }
 
-/* home */
+/* home css -------------------------------------------------*/
 .home{
   background-color: #a7bcff ;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
 
   .container{
-    border: 1px solid white;
-    border-radius: 10px;
-    width: 65%;
-    height: 80%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     overflow: hidden;
 
@@ -150,14 +154,16 @@
 
         .user{
           display: flex;
-          gap: 10px;
-
+          align-items: center;
+          font-size: 1.5rem;
+            
           img{
+            width: 50px;
+            height: 50px;
             background-color: #ddddf7;
-            height: 24px;
-            width: 24px;
             border-radius: 50%;
             object-fit: cover;
+            margin-right: 20px;
           }
           
           button{
@@ -166,25 +172,56 @@
             font-size: 12px;
             border: none;
             cursor: pointer;
+            
+            width: 70px;
+            height: 50px;
+            margin-left: 20vw;
+          
+            &:hover{
+              opacity: 0.7;
+            }
           }
         }
 
       }
       
       .search{
+        background-color: #201f3b;
+
+        border-top: 1px solid gray;
         border-bottom: 1px solid gray;
 
+        .userChat{
+         
+        }
+
+
         .searchForm{
+          height: 30px;
+          display: flex;
+          align-items: center;
+          padding: 10px;
+
 
           input{
             background: transparent;
             border: none;
             color: white;
             outline: none;
+            font-size: 20px;
+            width: 90%;
 
             &::placeholder{
               color: lightgray;
+              
             }
+          }
+
+          img{
+            width: 30px;
+          &:hover{
+            cursor: pointer;
+          }
           }
         }
       }
@@ -238,12 +275,19 @@
         }
       }
 
+      
 
       .messages{
         background-color: #ddddf7;
         padding: 10px;
         height: calc(100% - 160px);
         overflow-y: scroll;
+        .emptyMessages{
+          img{
+            width:200px;
+            transform: translateY(140%);
+          }
+        }
 
         .message{
           display: flex;
@@ -264,10 +308,16 @@
             }
           }
 
+          .messageContent img.messageImage {
+            max-width: 100%; /* Ensure the image doesn't exceed its container's width */
+            height: auto; /* Maintain the aspect ratio of the image */
+          }
+          
           .messageContent{
             max-width: 80%;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: center;
             gap: 10px;
 
             p{
@@ -277,10 +327,11 @@
               max-width: max-content;
             }
 
-            img{
-              width: 50%;
+            img.messageImage {
+              max-width: 100%;
+              width: 100%; // Set a fixed width for the image
+              height: auto;
             }
-            
             video{
               margin-top: -70px;
               width: 50%;
@@ -293,6 +344,24 @@
             
             .messageContent{
               align-items: flex-end;
+              flex-direction: row-reverse;
+
+              
+            img{
+              width: 50%;
+            }
+            
+            video{
+              margin-top: -70px;
+              width: 50%;
+            }
+            
+              .penDelete{
+                transform: translateY(-50%);
+                width: 5%;
+              }
+
+              
               
               p{
                 background-color: #8da4f1;
@@ -351,3 +420,167 @@
   }
 
 }
+
+
+//mobile ----------------------------------------------------
+@media screen and (max-width: 767px) {
+
+  .mobileInteface{
+    display:block;
+  }
+
+
+  .formContainer {
+    .formWrapper {
+      flex-direction: column;
+      .logoWrapper {
+        width: 100%;
+        padding: 5% 0%;
+        flex: 0;
+        .logo {
+          font-size: 50px;
+        }
+        .sub-logo {
+
+        }
+      }
+      .core-formWrapper {
+        p {}
+        .title {
+          font-size: 20px;
+        }
+        form {
+          gap: 10PX;
+          input {
+            width: auto;
+            padding: 5%;
+            &::placeholder {}
+          }
+          label {
+            img {
+              width: 30px;
+            }
+          }
+          button {
+            &:hover {}
+          }
+        }
+      }
+    }
+  }
+  
+  .home {
+    .container {
+      overflow: auto;
+
+      border: none;
+      .sidebar {
+        width: 100%;
+        z-index: 999;
+        position: fixed;
+        height: 100%;
+        background-color: hsl(243 24% 31%/0.6);
+        border: none;
+
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+        
+        &.showSidebar {
+          transform: translateX(0%);
+          opacity: 1;
+          visibility: visible;
+        }
+      
+        &.hideSideBar {
+          transform: translateX(-10%);
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        backdrop-filter: blur(1rem);
+        .navbar {
+          .logo {}
+          .user {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            img {
+              width: 50px;
+              height: 50px;
+            }
+            button {
+              margin-left: 10px;
+              height: 50px;
+              width: 50px;
+            }
+          }
+        }
+        .search {
+          .searchForm {
+            input {
+              &::placeholder {}
+            }
+          }
+        }
+        .userChat {
+          img {}
+          .userChatInfo {
+            span {}
+            p {}
+          }
+        }
+      }
+      .chat {
+        .chatInfo {
+        }
+        .chatIcons {
+          img {}
+        }
+        .messages {
+          object-fit:cover;
+          .emptyMessages{
+            img{
+              width:200px;
+              transform: translateY(100%);
+
+            }
+          }
+
+          .message {
+
+            .messageInfo {
+              img {}
+            }
+            .messageContent {
+              p {}
+              img.messageImage {}
+              video {}
+            }
+            &.owner {
+              .messageContent {
+                img {}
+                video {}
+                .penDelete {
+                  width: 20px;
+                }
+                p {}
+              }
+            }
+          }
+        }
+        .input {
+          input {
+            &::placeholder {}
+          }
+          .send {
+            img {}
+            button {}
+          }
+        }
+      }
+    }
+  }
+  
+}
+
+
