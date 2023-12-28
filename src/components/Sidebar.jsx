@@ -10,7 +10,7 @@ const Sidebar = (props) =>{
     <div className={`sidebar ${mobileView ? 'showSidebar' : 'hideSideBar'}`}>
         <Navbar/>
         <Search/>
-        <Chats/>
+        <Chats setShowSideBar={props.setShowSideBar}/>
     </div>
    )
 }

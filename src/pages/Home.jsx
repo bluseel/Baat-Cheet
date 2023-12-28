@@ -10,7 +10,7 @@ const Home = () =>{
    return(
     <div className="home">
         <div className="container">
-            <Sidebar showSideBar={showSideBar}/>
+            <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar}/>
             <Chat onStateChange={setShowSideBar}/>
 
             {console.log("hhhhh", showSideBar)}

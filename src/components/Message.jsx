@@ -57,6 +57,14 @@ const Message = ({ message, onEditMessage, onDeleteMessage }) => {
     setEditMode(false);
   };
 
+  const handleDeleteClick = () => {
+    const isConfirmed = window.confirm("Are you sure you want to delete this message?");
+
+    if (isConfirmed) {
+      onDeleteMessage(message.id);
+    }
+  };
+
   return (
     <div ref={ref} className={`message ${message.senderId === currentUser.uid && "owner"}`}>
       <div className="messageInfo">
@@ -73,10 +81,13 @@ const Message = ({ message, onEditMessage, onDeleteMessage }) => {
         onMouseLeave={handleMouseLeave}
       >
         {editMode ? (
-          <>
-            <textarea value={editedText} onChange={handleTextChange} />
-            <button onClick={handleSaveClick}>Save</button>
-          </>
+          <div className="editTextMode">
+            <input type="text" value={editedText} onChange={handleTextChange} />
+            <div className="editTextModeButtons">
+              <img src="crossInput.svg" alt="" onClick={toggleEditMode}/>
+              <img src="tickInput.svg" alt="" onClick={handleSaveClick} />
+            </div>
+          </div>
         ) : (
           <>
             
@@ -91,7 +102,7 @@ const Message = ({ message, onEditMessage, onDeleteMessage }) => {
             {message.senderId === currentUser.uid && isHovered && (
               <>
                 {message.text && <img src="pen.svg" onClick={toggleEditMode} className="penDelete" />}
-                <img src="delete.svg" onClick={() => onDeleteMessage(message.id)} className="penDelete" alt="" />
+                <img src="delete.svg" onClick={handleDeleteClick} className="penDelete" alt="" />
               </>
             )}
           </>

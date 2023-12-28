@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 
 
-const Chats = () =>{
+const Chats = (props) =>{
     const [chats, setChats] = useState([]);
     const {currentUser} = useContext(AuthContext);
     const {dispatch} = useContext(ChatContext);
@@ -28,6 +28,7 @@ const Chats = () =>{
     console.log(chats && Object.entries(chats));
 
     const handleSelect = (user)=>{
+        props.setShowSideBar(false);
         dispatch({type:"CHANGE_USER", payload: user});
     }
     return(
